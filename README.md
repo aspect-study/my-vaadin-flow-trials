@@ -29,6 +29,39 @@ This project is not a production-ready app — it's a **living lab** for studyin
 - **IntelliJ IDEA**
 
 ---
+📁 Project Structure
+views/ – All component demos and layout experiments
+
+views/main/MainLayout.java – App shell with navigation and theming
+
+views/common/ui/util/UiUtils.java – Reusable UI helpers
+
+frontend/ – Static assets and theme overrides (if needed)
+
+🧠 Why This Exists
+As a backend-focused developer, I wanted to explore how Vaadin lets me build modern UIs without writing JavaScript — while still giving me full control over layout, behavior, and state. This project is my way of learning by doing, documenting patterns, and building intuition around Vaadin’s component model.
+
+📸 Screenshots
+(Coming soon as I build out more views)
+
+🧼 GitHub Language Detection Fix
+To ensure GitHub recognizes this as a Java project (not JavaScript), I’ve added a .gitattributes file:
+```bash
+frontend/* linguist-vendored
+node_modules/* linguist-vendored
+*.js linguist-vendored
+*.ts linguist-vendored
+*.css linguist-vendored
+```
+📄 License
+MIT
+
+🙋‍♂️ Want to Follow Along?
+Feel free to fork this repo, explore the code, or suggest improvements. This is a study-first, build-later kind of project — and I’m always open to learning more.
+```
+Let me know if you want to add badges (like Java version, build status), or if you'd like help writing a CONTRIBUTING.md or setting up GitHub Pages to showcase your work!
+```
+---
 
 ## ▶️ How to Run
 
