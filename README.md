@@ -68,3 +68,159 @@ Let me know if you want to add badges (like Java version, build status), or if y
 ```bash
 mvn clean install
 mvn spring-boot:run
+```
+---
+✅ Full List of All Free Vaadin Flow Components (Apache 2.0 Licensed)
+📥 Input Components
+TextField
+
+PasswordField
+
+TextArea
+
+EmailField
+
+NumberField
+
+IntegerField
+
+BigDecimalField
+
+Checkbox
+
+CheckboxGroup
+
+RadioButtonGroup
+
+Select
+
+ComboBox
+
+ListBox
+
+MultiSelectListBox
+
+DatePicker
+
+TimePicker
+
+Slider
+
+CustomField
+
+🧾 Data Display
+Grid (basic features)
+
+TreeGrid
+
+VirtualList
+
+Details
+
+Accordion
+
+Tabs
+
+TabSheet
+
+Tooltip (part of many components)
+
+Badge
+
+Avatar
+
+AvatarGroup
+
+📦 Layout & Structure
+VerticalLayout
+
+HorizontalLayout
+
+FlexLayout
+
+FormLayout
+
+SplitLayout
+
+AppLayout
+
+Scroller
+
+DrawerToggle
+
+Div, Span, Paragraph, H1 to H6
+
+🚦 Buttons & Actions
+Button
+
+Anchor
+
+Icon
+
+ThemeIcon
+
+ContextMenu (basic functionality is free)
+
+💬 Dialogs & Notifications
+Dialog
+
+ConfirmDialog
+
+Notification
+
+📎 Miscellaneous / Utility
+Upload (basic version, with memory or file buffer)
+
+ProgressBar
+
+RichTextEditor
+
+IFrame
+
+Image
+
+Video
+
+🔄 Data Binding & Providers
+These aren’t visible components, but part of the framework:
+
+Binder<T> — powerful form data binding and validation
+
+DataProvider<T> — dynamic or lazy-loading data source
+
+ValueProvider<T, V>
+
+HasValue, HasComponents, etc.
+
+🧰 System / Base Utilities
+UI (access, navigate, push)
+
+Page (for metadata)
+
+Router, @Route, RouterLink, BeforeEnterEvent, etc.
+
+@Theme, @CssImport, @JsModule, @Tag
+
+❗ What’s Not Free?
+To recap, the following require a Pro or Enterprise license:
+
+Charts
+
+Spreadsheet
+
+Board
+
+Crud
+
+PDFViewer
+
+Timeline
+
+Collaboration Engine
+
+💡 Tip: How to Check Yourself
+You can always explore Vaadin’s component browser:
+
+🔗 https://vaadin.com/components
+
+Filter by License → Free
