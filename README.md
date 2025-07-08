@@ -222,5 +222,7 @@ Collaboration Engine
 You can always explore Vaadin’s component browser:
 
 🔗 https://vaadin.com/components
+🔗 https://vaadin.com/directory/
+🔗 https://vaadin.com/docs/latest/components/icons/default-icons
 
 Filter by License → Free
