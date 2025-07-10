@@ -3,6 +3,9 @@ package com.aspect.vaadin.study.task_manager_application.views.main;
 import com.aspect.vaadin.study.task_manager_application.views.buttons.ButtonView;
 import com.aspect.vaadin.study.task_manager_application.views.common.ui.util.UiUtils;
 import com.aspect.vaadin.study.task_manager_application.views.dashboards.DashboardView;
+import com.aspect.vaadin.study.task_manager_application.views.forminputs.EmailFieldView;
+import com.aspect.vaadin.study.task_manager_application.views.forminputs.PasswordFieldView;
+import com.aspect.vaadin.study.task_manager_application.views.forminputs.TextAreaView;
 import com.aspect.vaadin.study.task_manager_application.views.forminputs.TextFieldView;
 import com.aspect.vaadin.study.task_manager_application.views.layouts.HorizontalLayoutView;
 import com.aspect.vaadin.study.task_manager_application.views.layouts.VerticalLayoutView;
@@ -56,7 +59,7 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         header.getStyle().set("padding", "var(--lumo-space-s)");
         addToNavbar(header);
 
-        VerticalLayout menu = getVerticalLayout();
+        VerticalLayout menu = getHomeLayout();
         addToDrawer(menu);
 
         Accordion formInputAccordion = new Accordion();
@@ -82,30 +85,37 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         var js = "document.documentElement.setAttribute('theme', $0)";
         getElement().executeJs(js, dark ? Lumo.DARK : Lumo.LIGHT);
     }
-    @NotNull
+
     public static VerticalLayout getFormInputLayout() {
 
-//        RouterLink testFieldView = new RouterLink(TextFieldView.class);
-//        Icon textFieldIcon = new Icon(VaadinIcon.TEXT_INPUT);
-//        Span testFieldText = new Span("text-field-view");
-//        HorizontalLayout textFieldLayout = new HorizontalLayout(textFieldIcon,testFieldText);
-//        textFieldLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-//        textFieldLayout.getStyle().set("margin-left", "15px");
-//        testFieldView.add(textFieldLayout);
-//        testFieldView.getElement().setAttribute("title", "Navigate to Text Field View");
-//
-//        VerticalLayout layoutMenu = new VerticalLayout();
-//        layoutMenu.add(testFieldView);
-
-        RouterLink testFieldView = UiUtils.createNavigationLink(
+        RouterLink textFieldView = UiUtils.createNavigationLink(
                 TextFieldView.class,
                 VaadinIcon.TEXT_INPUT,
                 "text-field-view",
-                "Navigate to Text Field View");
+                "Navigate to text field View");
 
-        return UiUtils.wrapLinks(testFieldView);
+        RouterLink passwordFieldView = UiUtils.createNavigationLink(
+                PasswordFieldView.class,
+                VaadinIcon.PASSWORD,
+                "password-field-view",
+                "Navigate to password field View");
+
+        RouterLink textAreaView = UiUtils.createNavigationLink(
+                TextAreaView.class,
+                VaadinIcon.FILE_TEXT,
+                "text-area-view",
+                "Navigate to text area view");
+
+        RouterLink emailFieldView = UiUtils.createNavigationLink(
+                EmailFieldView.class,
+                VaadinIcon.MAILBOX,
+                "email-field-view",
+                "Navigate to email field view");
+
+        return UiUtils.wrapLinks(
+                textFieldView, passwordFieldView, textAreaView, emailFieldView);
     }
-    @NotNull
+
     private static VerticalLayout getButtonAndActionMenu() {
 
         RouterLink buttonView = UiUtils.createNavigationLink(
@@ -116,33 +126,27 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
 
         return UiUtils.wrapLinks(buttonView);
     }
-    @NotNull
+
     private static VerticalLayout getLayoutMenu() {
 
-        RouterLink horizontalView = new RouterLink("", HorizontalLayoutView.class);
-        Span horizontalText = new Span("Horizontal-view");
-        Icon horizontalViewIcon = new Icon(VaadinIcon.ARROW_RIGHT);
-        HorizontalLayout horizontalLayout = new HorizontalLayout(horizontalViewIcon, horizontalText);
-        horizontalLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        horizontalLayout.getStyle().set("margin-left", "15px");
-        horizontalView.add(horizontalLayout);
+        RouterLink horizontalView = UiUtils.createNavigationLink(
+                HorizontalLayoutView.class,
+                VaadinIcon.ARROW_RIGHT,
+                "horizontal-view",
+                "Navigate to horizontal view");
 
-        RouterLink verticalView = new RouterLink("", VerticalLayoutView.class);
-        Span verticalText = new Span("Vertical-view");
-        Icon verticalViewIcon = new Icon(VaadinIcon.ARROW_DOWN);
-        HorizontalLayout verticalLayout = new HorizontalLayout(verticalViewIcon, verticalText);
-        horizontalLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        horizontalLayout.getStyle().set("margin-left", "15px");
-        verticalView.add(verticalLayout);
+        RouterLink verticalView = UiUtils.createNavigationLink(
+                VerticalLayoutView.class,
+                VaadinIcon.ARROW_DOWN,
+                "vertical-view",
+                "Navigate to vertical view");
 
-        VerticalLayout layoutMenu = new VerticalLayout();
-        layoutMenu.add(horizontalView,verticalView);
 
-        return layoutMenu;
+
+        return UiUtils.wrapLinks(horizontalView, verticalView);
     }
 
-    @NotNull
-    private static VerticalLayout getVerticalLayout() {
+    private static VerticalLayout getHomeLayout() {
         RouterLink homeView = new RouterLink("", DashboardView.class);
         Span homeText = new Span("Home-view");
         Icon homeIcon = new Icon(VaadinIcon.HOME);
