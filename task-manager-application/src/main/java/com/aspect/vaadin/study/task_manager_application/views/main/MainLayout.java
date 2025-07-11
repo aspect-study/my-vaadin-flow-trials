@@ -22,8 +22,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.HasDynamicTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.Lumo;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -37,9 +35,8 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
             UiUtils.setTheme(themeToggle,true);
         }
         themeToggle.addValueChangeListener(
-                e -> {
-                    UiUtils.setTheme(themeToggle, e.getValue());
-                });
+                e ->
+                UiUtils.setTheme(themeToggle, e.getValue()));
 
         H2 title = new H2("Study with aspect; | Java - Vaadin Flow");
         title.getStyle().set("margin", "0");
@@ -79,11 +76,6 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         formInputAccordion.add("vis-timeline JS + WebComponent", new VerticalLayout());
         formInputAccordion.add("vPDF.js + <iframe> or <object> in Vaadin", new VerticalLayout());
         addToDrawer(formInputAccordion);
-    }
-
-    private void setTheme(boolean dark) {
-        var js = "document.documentElement.setAttribute('theme', $0)";
-        getElement().executeJs(js, dark ? Lumo.DARK : Lumo.LIGHT);
     }
 
     public static VerticalLayout getFormInputLayout() {
