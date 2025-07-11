@@ -1,5 +1,7 @@
 package com.aspect.vaadin.study.task_manager_application.views.common.ui.util;
 
+import com.aspect.vaadin.study.task_manager_application.views.common.ui.util.wrapper.LinkConfig;
+import com.aspect.vaadin.study.task_manager_application.views.forminputs.TextFieldView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -10,7 +12,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class UiUtils {
 
@@ -40,7 +44,6 @@ public class UiUtils {
      * @param tooltip   the descriptive text shown on hover
      * @return a styled {@code RouterLink} component with icon, label, and tooltip
      */
-
     public static RouterLink createNavigationLink(
             Class<? extends Component> viewClass,
             VaadinIcon icon,
@@ -66,7 +69,7 @@ public class UiUtils {
      *
      * @param links the {@code RouterLink} components to include in the vertical layout
      * @return a {@code VerticalLayout} containing the provided {@code RouterLink} components,
-     *         with no padding, spacing, or margin, and left-aligned
+     * with no padding, spacing, or margin, and left-aligned
      */
     public static VerticalLayout wrapLinks(RouterLink... links) {
         VerticalLayout wrapper = new VerticalLayout();
@@ -79,6 +82,17 @@ public class UiUtils {
         return wrapper;
     }
 
+    public static VerticalLayout createNavigationLayout(List<LinkConfig> linkConfigs) {
+        RouterLink[] routerLinks = linkConfigs.stream()
+                .map(linkConfig ->
+                        createNavigationLink(
+                                linkConfig.getViewClass(),
+                                linkConfig.getIcon(),
+                                linkConfig.getRouterId(),
+                                linkConfig.getDescription()))
+                .toArray(RouterLink[]::new);
+        return wrapLinks(routerLinks);
+    }
 
 }
 
