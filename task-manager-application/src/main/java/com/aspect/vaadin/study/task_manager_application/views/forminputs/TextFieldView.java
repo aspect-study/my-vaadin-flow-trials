@@ -44,7 +44,6 @@ public class TextFieldView extends VerticalLayout {
         code.getElement().getStyle()
                 .set("white-space", "pre-wrap")
                 .set("font-family", "monospace")
-                //.set("background-color", "#000000")
                 .set("padding", "1em")
                 .set("border-radius", "8px")
                 .set("border", "1px solid #ddd")

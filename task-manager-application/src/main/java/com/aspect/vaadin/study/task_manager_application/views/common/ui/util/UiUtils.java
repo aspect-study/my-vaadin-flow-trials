@@ -15,11 +15,15 @@ import java.util.Arrays;
 public class UiUtils {
 
     private UiUtils() {
-        // Utility class — prevent instantiation
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
     /**
-     * Dynamically sets the Lumo theme (light or dark).
+     * Sets the global theme (light or dark) based on the provided toggle value.
+     * Executes JavaScript to apply the theme to the HTML root element.
+     *
+     * @param component the {@code Component} used to invoke the JavaScript execution
+     * @param dark      {@code true} to apply the {@code Lumo.DARK} theme, {@code false} for {@code Lumo.LIGHT}
      */
     public static void setTheme(Component component, boolean dark) {
         String js = "document.documentElement.setAttribute('theme', $0)";
@@ -27,8 +31,16 @@ public class UiUtils {
     }
 
     /**
-     * Creates a styled RouterLink with an icon, label, and tooltip.
+     * Creates a styled {@link RouterLink} with an icon, label, and tooltip,
+     * arranged horizontally for use in navigation layouts.
+     *
+     * @param viewClass the target view class to navigate to
+     * @param icon      the {@link VaadinIcon} to display alongside the label
+     * @param label     the visible label text for the link
+     * @param tooltip   the descriptive text shown on hover
+     * @return a styled {@code RouterLink} component with icon, label, and tooltip
      */
+
     public static RouterLink createNavigationLink(
             Class<? extends Component> viewClass,
             VaadinIcon icon,
@@ -50,7 +62,11 @@ public class UiUtils {
     }
 
     /**
-     * Wraps one or more RouterLinks in a styled VerticalLayout.
+     * Wraps multiple {@link RouterLink} components in a {@link VerticalLayout}.
+     *
+     * @param links the {@code RouterLink} components to include in the vertical layout
+     * @return a {@code VerticalLayout} containing the provided {@code RouterLink} components,
+     *         with no padding, spacing, or margin, and left-aligned
      */
     public static VerticalLayout wrapLinks(RouterLink... links) {
         VerticalLayout wrapper = new VerticalLayout();
@@ -62,6 +78,7 @@ public class UiUtils {
         Arrays.stream(links).forEach(wrapper::add);
         return wrapper;
     }
+
 
 }
 
