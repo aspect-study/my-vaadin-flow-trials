@@ -20,6 +20,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.router.HasDynamicTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
@@ -39,7 +40,7 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
                 e ->
                 UiUtils.setTheme(themeToggle, e.getValue()));
 
-        H2 title = new H2("Study with aspect; | Java - Vaadin Flow");
+        H2 title = new H2("Study with aspect; | Java - Vaadin Flow - User Interface Framework");
         title.getStyle().set("margin", "0");
 
         Avatar aspectAvatar = new Avatar("Aspect");
@@ -65,17 +66,17 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         formInputAccordion.add("Button and Actions", getButtonAndActionMenu());
         formInputAccordion.add("Data Display", new VerticalLayout());
         formInputAccordion.add("Layouts", getLayoutMenu());
-        formInputAccordion.add("Dialogs & Notifications", new VerticalLayout());
-        formInputAccordion.add("Navigation & Routing", new VerticalLayout());
-        formInputAccordion.add("Miscellaneous", new VerticalLayout());
-        formInputAccordion.add("Utility Components", new VerticalLayout());
-        formInputAccordion.add("Vaadin Chart.js Wrapper (Community)", new VerticalLayout());
-        formInputAccordion.add("Apache POI + Vaadin Grid", new VerticalLayout());
-        formInputAccordion.add("Vaadin Layouts + CSS Grid or FlexLayout", new VerticalLayout());
-        formInputAccordion.add("Vaadin ContextMenu (Free Component)", new VerticalLayout());
-        formInputAccordion.add("Manual CRUD using Grid + Binder + Dialog", new VerticalLayout());
-        formInputAccordion.add("vis-timeline JS + WebComponent", new VerticalLayout());
-        formInputAccordion.add("vPDF.js + <iframe> or <object> in Vaadin", new VerticalLayout());
+//        formInputAccordion.add("Dialogs & Notifications", new VerticalLayout());
+//        formInputAccordion.add("Navigation & Routing", new VerticalLayout());
+//        formInputAccordion.add("Miscellaneous", new VerticalLayout());
+//        formInputAccordion.add("Utility Components", new VerticalLayout());
+//        formInputAccordion.add("Vaadin Chart.js Wrapper (Community)", new VerticalLayout());
+//        formInputAccordion.add("Apache POI + Vaadin Grid", new VerticalLayout());
+//        formInputAccordion.add("Vaadin Layouts + CSS Grid or FlexLayout", new VerticalLayout());
+//        formInputAccordion.add("Vaadin ContextMenu (Free Component)", new VerticalLayout());
+//        formInputAccordion.add("Manual CRUD using Grid + Binder + Dialog", new VerticalLayout());
+//        formInputAccordion.add("vis-timeline JS + WebComponent", new VerticalLayout());
+//        formInputAccordion.add("vPDF.js + <iframe> or <object> in Vaadin", new VerticalLayout());
         addToDrawer(formInputAccordion);
     }
 
@@ -85,9 +86,17 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
                 new LinkConfig(PasswordFieldView.class,VaadinIcon.PASSWORD, "password-field-view", "Navigate to password field View"),
                 new LinkConfig(TextAreaView.class,VaadinIcon.FILE_TEXT, "text-area-view", "Navigate to text area view"),
                 new LinkConfig(EmailFieldView.class,VaadinIcon.ENVELOPE, "email-field-view", "Navigate to email field view"),
-                new LinkConfig(NumberFieldView.class,VaadinIcon.TEXT_INPUT, "number-field-view", "Navigate to number field view"),
-                new LinkConfig(IntegerFieldView.class,VaadinIcon.TEXT_INPUT, "integer-field-view", "Navigate to integer field view"),
-                new LinkConfig(BigDecimalFieldView.class,VaadinIcon.TEXT_INPUT, "bigdecimal-field-view", "Navigate to bigdecimal field view")
+                new LinkConfig(NumberFieldView.class,VaadinIcon.PHONE, "number-field-view", "Navigate to number field view"),
+                new LinkConfig(IntegerFieldView.class,VaadinIcon.PHONE_LANDLINE, "integer-field-view", "Navigate to integer field view"),
+                new LinkConfig(BigDecimalFieldView.class,VaadinIcon.MONEY, "big-decimal-field-view", "Navigate to big decimal field view"),
+                new LinkConfig(CheckboxView.class,VaadinIcon.CHECK_SQUARE, "checkbox-field-view", "Navigate to checkbox view"),
+                new LinkConfig(GroupCheckboxView.class,VaadinIcon.CHECK_SQUARE, "group-checkbox-view", "Navigate to group checkbox view"),
+                new LinkConfig(RadioButtonGroupView.class,VaadinIcon.CIRCLE, "radio-button-view", "Navigate to group radio button view"),
+                new LinkConfig(SelectView.class,VaadinIcon.SELECT, "select-view", "Navigate to select view"),
+                new LinkConfig(ComboBoxView.class,VaadinIcon.COMBOBOX, "combo-box-view", "Navigate to combo box view"),
+                new LinkConfig(ListBoxView.class,VaadinIcon.LIST, "list-box-view", "Navigate to list box view"),
+                new LinkConfig(DatePickerView.class,VaadinIcon.DATE_INPUT, "date-picker-view", "Navigate to date picker view"),
+                new LinkConfig(TimePickerView.class,VaadinIcon.TIME_FORWARD, "time-picker-view", "Navigate to time picker view")
         );
         return UiUtils.createNavigationLayout(linkConfigs);
     }
