@@ -1,6 +1,8 @@
 package com.aspect.vaadin.study.task_manager_application.views.forminputs;
 
+import com.aspect.vaadin.study.task_manager_application.views.common.ui.util.abstractcomponent.ComponentView;
 import com.aspect.vaadin.study.task_manager_application.views.main.MainLayout;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
@@ -11,32 +13,35 @@ import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "number-field-view", layout = MainLayout.class)
-public class NumberFieldView extends VerticalLayout {
+public class NumberFieldView extends ComponentView {
 
-    public NumberFieldView() {
-        H1 title = new H1("Number Field");
-        String desc = """
-                Number Field is an input field that accepts only numeric input. The input can be a decimal or an integer.
-                There is also a big decimal for Flow.
+    @Override
+    protected String getTitle() {
+        return "Number Field";
+    }
+
+    @Override
+    protected String getDescription() {
+        return """
+                 Number Field is an input field that accepts only numeric input. The input can be a decimal or an integer.
+                 There is also a big decimal for Flow.
                 """;
-        Paragraph description = new Paragraph(desc);
-        add(title, description);
+    }
 
+    @Override
+    protected Component createComponent() {
         NumberField numberField = new NumberField();
         numberField.setValue(100.0);
         numberField.setLabel("Balance");
         numberField.setClearButtonVisible(true);
         //numberField.setPrefixComponent(VaadinIcon.DOLLAR.create());
         numberField.setSuffixComponent(VaadinIcon.EURO.create());
-        add(numberField);
-
-        Accordion show = new Accordion();
-        show.add("source code",createCodeBlock());
-        add(show);
+        return numberField;
     }
 
-    private VerticalLayout createCodeBlock() {
-        Span code = new Span("""
+    @Override
+    protected String getSourceCode() {
+        return """
                 NumberField numberField = new NumberField();
                 numberField.setValue(100.0);
                 numberField.setLabel("Balance");
@@ -44,19 +49,6 @@ public class NumberFieldView extends VerticalLayout {
                 //numberField.setPrefixComponent(VaadinIcon.DOLLAR.create());
                 numberField.setSuffixComponent(VaadinIcon.EURO.create());
                 add(numberField);
-                """);
-
-        code.getElement().getStyle()
-                .set("white-space", "pre-wrap")
-                .set("font-family", "monospace")
-                .set("padding", "1em")
-                .set("border-radius", "8px")
-                .set("border", "1px solid #ddd")
-                .set("display", "block");
-
-        VerticalLayout layout = new VerticalLayout(code);
-        layout.setPadding(false);
-        layout.setSpacing(false);
-        return layout;
+                """;
     }
 }

@@ -1,6 +1,8 @@
 package com.aspect.vaadin.study.task_manager_application.views.forminputs;
 
+import com.aspect.vaadin.study.task_manager_application.views.common.ui.util.abstractcomponent.ComponentView;
 import com.aspect.vaadin.study.task_manager_application.views.main.MainLayout;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
@@ -12,49 +14,39 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "text-area-view", layout = MainLayout.class)
-public class TextAreaView extends VerticalLayout {
+public class TextAreaView extends ComponentView {
 
-    public TextAreaView() {
-        H1 title = new H1("Text Area");
-        String desc = """
+    @Override
+    protected String getTitle() {
+        return "Text Area";
+    }
+
+    @Override
+    protected String getDescription() {
+        return """
                 Text Area is an input field component that allows entry of multiple lines of text.
                 """;
-        Paragraph description = new Paragraph(desc);
-        add(title, description);
+    }
 
+    @Override
+    protected Component createComponent() {
         TextArea textArea = new TextArea();
         textArea.setWidthFull();
         textArea.setLabel("Comment");
         textArea.setClearButtonVisible(true);
         textArea.setValue("Great Job!");
-        add(textArea);
-
-        Accordion show = new Accordion();
-        show.add("source code",createCodeBlock());
-        add(show);
+        return textArea;
     }
 
-    private VerticalLayout createCodeBlock() {
-        Span code = new Span("""
+    @Override
+    protected String getSourceCode() {
+        return """
                 TextArea textArea = new TextArea();
                 textArea.setWidthFull();
                 textArea.setLabel("Comment");
                 textArea.setClearButtonVisible(true);
                 textArea.setValue("Great Job!");
                 add(textArea);
-                """);
-
-        code.getElement().getStyle()
-                .set("white-space", "pre-wrap")
-                .set("font-family", "monospace")
-                .set("padding", "1em")
-                .set("border-radius", "8px")
-                .set("border", "1px solid #ddd")
-                .set("display", "block");
-
-        VerticalLayout layout = new VerticalLayout(code);
-        layout.setPadding(false);
-        layout.setSpacing(false);
-        return layout;
+                """;
     }
 }

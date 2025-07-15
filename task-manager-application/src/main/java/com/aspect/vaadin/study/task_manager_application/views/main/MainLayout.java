@@ -7,6 +7,7 @@ import com.aspect.vaadin.study.task_manager_application.views.dashboards.Dashboa
 import com.aspect.vaadin.study.task_manager_application.views.forminputs.*;
 import com.aspect.vaadin.study.task_manager_application.views.layouts.HorizontalLayoutView;
 import com.aspect.vaadin.study.task_manager_application.views.layouts.VerticalLayoutView;
+import com.aspect.vaadin.study.task_manager_application.views.forminputs.IntegerFieldView;
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -79,44 +80,34 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
     }
 
     public static VerticalLayout getFormInputLayout() {
-
         List<LinkConfig> linkConfigs = List.of(
                 new LinkConfig(TextFieldView.class,VaadinIcon.TEXT_INPUT, "text-field-view", "Navigate to text field View"),
                 new LinkConfig(PasswordFieldView.class,VaadinIcon.PASSWORD, "password-field-view", "Navigate to password field View"),
                 new LinkConfig(TextAreaView.class,VaadinIcon.FILE_TEXT, "text-area-view", "Navigate to text area view"),
                 new LinkConfig(EmailFieldView.class,VaadinIcon.ENVELOPE, "email-field-view", "Navigate to email field view"),
-                new LinkConfig(NumberFieldView.class,VaadinIcon.TEXT_INPUT, "number-field-view", "Navigate to number field view")
-
+                new LinkConfig(NumberFieldView.class,VaadinIcon.TEXT_INPUT, "number-field-view", "Navigate to number field view"),
+                new LinkConfig(IntegerFieldView.class,VaadinIcon.TEXT_INPUT, "integer-field-view", "Navigate to integer field view"),
+                new LinkConfig(BigDecimalFieldView.class,VaadinIcon.TEXT_INPUT, "bigdecimal-field-view", "Navigate to bigdecimal field view")
         );
         return UiUtils.createNavigationLayout(linkConfigs);
     }
 
     private static VerticalLayout getButtonAndActionMenu() {
 
-        RouterLink buttonView = UiUtils.createNavigationLink(
-                ButtonView.class,
-                VaadinIcon.BUTTON,
-                "button-view",
-                "Navigate to Button View");
-
-        return UiUtils.wrapLinks(buttonView);
+        List<LinkConfig> linkConfigs = List.of(
+                new LinkConfig(ButtonView.class,VaadinIcon.BUTTON, "button-view", "Navigate to Button View")
+        );
+        return UiUtils.createNavigationLayout(linkConfigs);
     }
 
     private static VerticalLayout getLayoutMenu() {
 
-        RouterLink horizontalView = UiUtils.createNavigationLink(
-                HorizontalLayoutView.class,
-                VaadinIcon.ARROW_RIGHT,
-                "horizontal-view",
-                "Navigate to horizontal view");
+        List<LinkConfig> linkConfigs = List.of(
+                new LinkConfig(HorizontalLayoutView.class,VaadinIcon.ARROW_RIGHT, "horizontal-view", "Navigate to horizontal view"),
+                new LinkConfig(VerticalLayoutView.class,VaadinIcon.ARROW_DOWN, "vertical-view", "Navigate to vertical view")
+        );
 
-        RouterLink verticalView = UiUtils.createNavigationLink(
-                VerticalLayoutView.class,
-                VaadinIcon.ARROW_DOWN,
-                "vertical-view",
-                "Navigate to vertical view");
-
-        return UiUtils.wrapLinks(horizontalView, verticalView);
+        return UiUtils.createNavigationLayout(linkConfigs);
     }
 
     private static VerticalLayout getHomeLayout() {
