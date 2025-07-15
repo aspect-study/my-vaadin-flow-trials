@@ -44,7 +44,7 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         title.getStyle().set("margin", "0");
 
         Avatar aspectAvatar = new Avatar("Aspect");
-        aspectAvatar.setImage("https://gravatar.com/avatar/27f11583af9e6a3411972f0fed1fe469?s=400&d=robohash&r=x");
+        aspectAvatar.setImage("https://robohash.org/1c8e8a6e8d1fe52b782b280909abeb38?set=set4&bgset=&size=400x400");
         aspectAvatar.getStyle().set("margin-left", "auto");
         aspectAvatar.getStyle().set("background-color", "#000000");
         aspectAvatar.getElement().getThemeList().add("large");
@@ -80,6 +80,20 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         addToDrawer(formInputAccordion);
     }
 
+    private static VerticalLayout getHomeLayout() {
+        RouterLink homeView = new RouterLink("", DashboardView.class);
+        Span homeText = new Span("Home-view");
+        Icon homeIcon = new Icon(VaadinIcon.HOME);
+        HorizontalLayout homeLayout = new HorizontalLayout(homeIcon, homeText);
+        homeLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+        homeView.add(homeLayout);
+
+        VerticalLayout menu = new VerticalLayout(homeView);
+        menu.setAlignItems(FlexComponent.Alignment.START);
+
+        return menu;
+    }
+
     public static VerticalLayout getFormInputLayout() {
         List<LinkConfig> linkConfigs = List.of(
                 new LinkConfig(TextFieldView.class,VaadinIcon.TEXT_INPUT, "text-field-view", "Navigate to text field View"),
@@ -109,6 +123,11 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         return UiUtils.createNavigationLayout(linkConfigs);
     }
 
+    private static VerticalLayout getDataDisplayMenu() {
+
+        return null;
+    }
+
     private static VerticalLayout getLayoutMenu() {
 
         List<LinkConfig> linkConfigs = List.of(
@@ -117,20 +136,6 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         );
 
         return UiUtils.createNavigationLayout(linkConfigs);
-    }
-
-    private static VerticalLayout getHomeLayout() {
-        RouterLink homeView = new RouterLink("", DashboardView.class);
-        Span homeText = new Span("Home-view");
-        Icon homeIcon = new Icon(VaadinIcon.HOME);
-        HorizontalLayout homeLayout = new HorizontalLayout(homeIcon, homeText);
-        homeLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        homeView.add(homeLayout);
-
-        VerticalLayout menu = new VerticalLayout(homeView);
-        menu.setAlignItems(FlexComponent.Alignment.START);
-
-        return menu;
     }
 
     @Override
