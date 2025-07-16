@@ -39,7 +39,7 @@ public class SelectView extends ComponentView {
                 "Price: low to high");
         selectWithDivider.addComponents("Most recent first", new Hr());
         selectWithDivider.addComponents("Rating: low to high", new Hr());
-        selectWithDivider.setValue("Most recent first");
+        selectWithDivider.setValue("Rating: low to high");
 
         displaySelectComponent.add(select, selectWithDivider);
         return displaySelectComponent;

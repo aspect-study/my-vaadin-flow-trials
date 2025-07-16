@@ -4,6 +4,7 @@ import com.aspect.vaadin.study.task_manager_application.views.buttons.ButtonView
 import com.aspect.vaadin.study.task_manager_application.views.common.ui.util.UiUtils;
 import com.aspect.vaadin.study.task_manager_application.views.common.ui.util.wrapper.LinkConfig;
 import com.aspect.vaadin.study.task_manager_application.views.dashboards.DashboardView;
+import com.aspect.vaadin.study.task_manager_application.views.datadisplay.GridView;
 import com.aspect.vaadin.study.task_manager_application.views.forminputs.*;
 import com.aspect.vaadin.study.task_manager_application.views.layouts.HorizontalLayoutView;
 import com.aspect.vaadin.study.task_manager_application.views.layouts.VerticalLayoutView;
@@ -64,7 +65,7 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         Accordion formInputAccordion = new Accordion();
         formInputAccordion.add("Form Inputs", getFormInputLayout());
         formInputAccordion.add("Button and Actions", getButtonAndActionMenu());
-        formInputAccordion.add("Data Display", new VerticalLayout());
+        formInputAccordion.add("Data Display", getDataDisplayMenu());
         formInputAccordion.add("Layouts", getLayoutMenu());
 //        formInputAccordion.add("Dialogs & Notifications", new VerticalLayout());
 //        formInputAccordion.add("Navigation & Routing", new VerticalLayout());
@@ -96,21 +97,36 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
 
     public static VerticalLayout getFormInputLayout() {
         List<LinkConfig> linkConfigs = List.of(
-                new LinkConfig(TextFieldView.class,VaadinIcon.TEXT_INPUT, "text-field-view", "Navigate to text field View"),
-                new LinkConfig(PasswordFieldView.class,VaadinIcon.PASSWORD, "password-field-view", "Navigate to password field View"),
-                new LinkConfig(TextAreaView.class,VaadinIcon.FILE_TEXT, "text-area-view", "Navigate to text area view"),
-                new LinkConfig(EmailFieldView.class,VaadinIcon.ENVELOPE, "email-field-view", "Navigate to email field view"),
-                new LinkConfig(NumberFieldView.class,VaadinIcon.PHONE, "number-field-view", "Navigate to number field view"),
-                new LinkConfig(IntegerFieldView.class,VaadinIcon.PHONE_LANDLINE, "integer-field-view", "Navigate to integer field view"),
-                new LinkConfig(BigDecimalFieldView.class,VaadinIcon.MONEY, "big-decimal-field-view", "Navigate to big decimal field view"),
-                new LinkConfig(CheckboxView.class,VaadinIcon.CHECK_SQUARE, "checkbox-field-view", "Navigate to checkbox view"),
-                new LinkConfig(GroupCheckboxView.class,VaadinIcon.CHECK_SQUARE, "group-checkbox-view", "Navigate to group checkbox view"),
-                new LinkConfig(RadioButtonGroupView.class,VaadinIcon.CIRCLE, "radio-button-view", "Navigate to group radio button view"),
-                new LinkConfig(SelectView.class,VaadinIcon.SELECT, "select-view", "Navigate to select view"),
-                new LinkConfig(ComboBoxView.class,VaadinIcon.COMBOBOX, "combo-box-view", "Navigate to combo box view"),
-                new LinkConfig(ListBoxView.class,VaadinIcon.LIST, "list-box-view", "Navigate to list box view"),
-                new LinkConfig(DatePickerView.class,VaadinIcon.DATE_INPUT, "date-picker-view", "Navigate to date picker view"),
-                new LinkConfig(TimePickerView.class,VaadinIcon.TIME_FORWARD, "time-picker-view", "Navigate to time picker view")
+                new LinkConfig(TextFieldView.class,VaadinIcon.TEXT_INPUT,
+                        "text-field-view", "Navigate to text field View"),
+                new LinkConfig(PasswordFieldView.class,VaadinIcon.PASSWORD,
+                        "password-field-view", "Navigate to password field View"),
+                new LinkConfig(TextAreaView.class,VaadinIcon.FILE_TEXT,
+                        "text-area-view", "Navigate to text area view"),
+                new LinkConfig(EmailFieldView.class,VaadinIcon.ENVELOPE,
+                        "email-field-view", "Navigate to email field view"),
+                new LinkConfig(NumberFieldView.class,VaadinIcon.PHONE,
+                        "number-field-view", "Navigate to number field view"),
+                new LinkConfig(IntegerFieldView.class,VaadinIcon.PHONE_LANDLINE,
+                        "integer-field-view", "Navigate to integer field view"),
+                new LinkConfig(BigDecimalFieldView.class,VaadinIcon.MONEY,
+                        "big-decimal-field-view", "Navigate to big decimal field view"),
+                new LinkConfig(CheckboxView.class,VaadinIcon.CHECK_SQUARE,
+                        "checkbox-field-view", "Navigate to checkbox view"),
+                new LinkConfig(GroupCheckboxView.class,VaadinIcon.CHECK_SQUARE,
+                        "group-checkbox-view", "Navigate to group checkbox view"),
+                new LinkConfig(RadioButtonGroupView.class,VaadinIcon.CIRCLE,
+                        "radio-button-view", "Navigate to group radio button view"),
+                new LinkConfig(SelectView.class,VaadinIcon.SELECT,
+                        "select-view", "Navigate to select view"),
+                new LinkConfig(ComboBoxView.class,VaadinIcon.COMBOBOX,
+                        "combo-box-view", "Navigate to combo box view"),
+                new LinkConfig(ListBoxView.class,VaadinIcon.LIST,
+                        "list-box-view", "Navigate to list box view"),
+                new LinkConfig(DatePickerView.class,VaadinIcon.DATE_INPUT,
+                        "date-picker-view", "Navigate to date picker view"),
+                new LinkConfig(TimePickerView.class,VaadinIcon.TIME_FORWARD,
+                        "time-picker-view", "Navigate to time picker view")
         );
         return UiUtils.createNavigationLayout(linkConfigs);
     }
@@ -124,8 +140,10 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
     }
 
     private static VerticalLayout getDataDisplayMenu() {
-
-        return null;
+        List<LinkConfig> linkConfigs = List.of(
+                new LinkConfig(GridView.class,VaadinIcon.GRID, "grid-view", "Navigate to grid View")
+                );
+        return UiUtils.createNavigationLayout(linkConfigs)  ;
     }
 
     private static VerticalLayout getLayoutMenu() {
