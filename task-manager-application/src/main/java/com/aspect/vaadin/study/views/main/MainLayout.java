@@ -139,7 +139,8 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
 
     private static VerticalLayout getDataDisplayMenu() {
         List<LinkConfig> linkConfigs = List.of(
-                new LinkConfig(GridView.class,VaadinIcon.GRID, "grid-view", "Navigate to grid View")
+                new LinkConfig(GridView.class,VaadinIcon.GRID,
+                        "grid-view", "Navigate to grid View")
                 );
         return UiUtils.createNavigationLayout(linkConfigs)  ;
     }
