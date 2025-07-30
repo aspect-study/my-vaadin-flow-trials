@@ -5,6 +5,7 @@ import com.aspect.vaadin.study.views.common.ui.util.UiUtils;
 import com.aspect.vaadin.study.views.common.ui.util.wrapper.LinkConfig;
 import com.aspect.vaadin.study.views.dashboards.DashboardView;
 import com.aspect.vaadin.study.views.datadisplay.GridView;
+import com.aspect.vaadin.study.views.datadisplay.TreeGridView;
 import com.aspect.vaadin.study.views.forminputs.*;
 import com.aspect.vaadin.study.views.layouts.HorizontalLayoutView;
 import com.aspect.vaadin.study.views.layouts.VerticalLayoutView;
@@ -32,12 +33,12 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
     public MainLayout() {
         var themeToggle = new Checkbox("Dark theme");
         themeToggle.setValue(true);
-        if(themeToggle.getValue()) {
-            UiUtils.setTheme(themeToggle,true);
+        if (themeToggle.getValue()) {
+            UiUtils.setTheme(themeToggle, true);
         }
         themeToggle.addValueChangeListener(
                 e ->
-                UiUtils.setTheme(themeToggle, e.getValue()));
+                        UiUtils.setTheme(themeToggle, e.getValue()));
 
         H2 title = new H2("Study with aspect; | Java - Vaadin Flow - User Interface Framework");
         title.getStyle().set("margin", "0");
@@ -51,7 +52,7 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
         DrawerToggle toggle = new DrawerToggle();
         toggle.setIcon(new Icon(VaadinIcon.MENU));
 
-        HorizontalLayout header = new HorizontalLayout(toggle, title, aspectAvatar,themeToggle);
+        HorizontalLayout header = new HorizontalLayout(toggle, title, aspectAvatar, themeToggle);
         header.setVerticalComponentAlignment(FlexComponent.Alignment.START);
         header.setWidthFull();
         header.getStyle().set("padding", "var(--lumo-space-s)");
@@ -95,36 +96,21 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
 
     public static VerticalLayout getFormInputLayout() {
         List<LinkConfig> linkConfigs = List.of(
-                new LinkConfig(TextFieldView.class,VaadinIcon.TEXT_INPUT,
-                        "text-field-view", "Navigate to text field View"),
-                new LinkConfig(PasswordFieldView.class,VaadinIcon.PASSWORD,
-                        "password-field-view", "Navigate to password field View"),
-                new LinkConfig(TextAreaView.class,VaadinIcon.FILE_TEXT,
-                        "text-area-view", "Navigate to text area view"),
-                new LinkConfig(EmailFieldView.class,VaadinIcon.ENVELOPE,
-                        "email-field-view", "Navigate to email field view"),
-                new LinkConfig(NumberFieldView.class,VaadinIcon.PHONE,
-                        "number-field-view", "Navigate to number field view"),
-                new LinkConfig(IntegerFieldView.class,VaadinIcon.PHONE_LANDLINE,
-                        "integer-field-view", "Navigate to integer field view"),
-                new LinkConfig(BigDecimalFieldView.class,VaadinIcon.MONEY,
-                        "big-decimal-field-view", "Navigate to big decimal field view"),
-                new LinkConfig(CheckboxView.class,VaadinIcon.CHECK_SQUARE,
-                        "checkbox-field-view", "Navigate to checkbox view"),
-                new LinkConfig(GroupCheckboxView.class,VaadinIcon.CHECK_SQUARE,
-                        "group-checkbox-view", "Navigate to group checkbox view"),
-                new LinkConfig(RadioButtonGroupView.class,VaadinIcon.CIRCLE,
-                        "radio-button-view", "Navigate to group radio button view"),
-                new LinkConfig(SelectView.class,VaadinIcon.SELECT,
-                        "select-view", "Navigate to select view"),
-                new LinkConfig(ComboBoxView.class,VaadinIcon.COMBOBOX,
-                        "combo-box-view", "Navigate to combo box view"),
-                new LinkConfig(ListBoxView.class,VaadinIcon.LIST,
-                        "list-box-view", "Navigate to list box view"),
-                new LinkConfig(DatePickerView.class,VaadinIcon.DATE_INPUT,
-                        "date-picker-view", "Navigate to date picker view"),
-                new LinkConfig(TimePickerView.class,VaadinIcon.TIME_FORWARD,
-                        "time-picker-view", "Navigate to time picker view")
+                new LinkConfig(TextFieldView.class, VaadinIcon.TEXT_INPUT, "text-field-view", "Navigate to text field View"),
+                new LinkConfig(PasswordFieldView.class, VaadinIcon.PASSWORD, "password-field-view", "Navigate to password field View"),
+                new LinkConfig(TextAreaView.class, VaadinIcon.FILE_TEXT, "text-area-view", "Navigate to text area view"),
+                new LinkConfig(EmailFieldView.class, VaadinIcon.ENVELOPE, "email-field-view", "Navigate to email field view"),
+                new LinkConfig(NumberFieldView.class, VaadinIcon.PHONE, "number-field-view", "Navigate to number field view"),
+                new LinkConfig(IntegerFieldView.class, VaadinIcon.PHONE_LANDLINE, "integer-field-view", "Navigate to integer field view"),
+                new LinkConfig(BigDecimalFieldView.class, VaadinIcon.MONEY, "big-decimal-field-view", "Navigate to big decimal field view"),
+                new LinkConfig(CheckboxView.class, VaadinIcon.CHECK_SQUARE, "checkbox-field-view", "Navigate to checkbox view"),
+                new LinkConfig(GroupCheckboxView.class, VaadinIcon.CHECK_SQUARE, "group-checkbox-view", "Navigate to group checkbox view"),
+                new LinkConfig(RadioButtonGroupView.class, VaadinIcon.CIRCLE, "radio-button-view", "Navigate to group radio button view"),
+                new LinkConfig(SelectView.class, VaadinIcon.SELECT, "select-view", "Navigate to select view"),
+                new LinkConfig(ComboBoxView.class, VaadinIcon.COMBOBOX, "combo-box-view", "Navigate to combo box view"),
+                new LinkConfig(ListBoxView.class, VaadinIcon.LIST, "list-box-view", "Navigate to list box view"),
+                new LinkConfig(DatePickerView.class, VaadinIcon.DATE_INPUT, "date-picker-view", "Navigate to date picker view"),
+                new LinkConfig(TimePickerView.class, VaadinIcon.TIME_FORWARD, "time-picker-view", "Navigate to time picker view")
         );
         return UiUtils.createNavigationLayout(linkConfigs);
     }
@@ -132,24 +118,24 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
     private static VerticalLayout getButtonAndActionMenu() {
 
         List<LinkConfig> linkConfigs = List.of(
-                new LinkConfig(ButtonView.class,VaadinIcon.BUTTON, "button-view", "Navigate to Button View")
+                new LinkConfig(ButtonView.class, VaadinIcon.BUTTON, "button-view", "Navigate to Button View")
         );
         return UiUtils.createNavigationLayout(linkConfigs);
     }
 
     private static VerticalLayout getDataDisplayMenu() {
         List<LinkConfig> linkConfigs = List.of(
-                new LinkConfig(GridView.class,VaadinIcon.GRID,
-                        "grid-view", "Navigate to grid View")
-                );
-        return UiUtils.createNavigationLayout(linkConfigs)  ;
+                new LinkConfig(GridView.class, VaadinIcon.GRID, "grid-view", "Navigate to grid View"),
+                new LinkConfig(TreeGridView.class, VaadinIcon.TREE_TABLE, "tree-grid-view", "Navigate to tree grid View")
+        );
+        return UiUtils.createNavigationLayout(linkConfigs);
     }
 
     private static VerticalLayout getLayoutMenu() {
 
         List<LinkConfig> linkConfigs = List.of(
-                new LinkConfig(HorizontalLayoutView.class,VaadinIcon.ARROW_RIGHT, "horizontal-view", "Navigate to horizontal view"),
-                new LinkConfig(VerticalLayoutView.class,VaadinIcon.ARROW_DOWN, "vertical-view", "Navigate to vertical view")
+                new LinkConfig(HorizontalLayoutView.class, VaadinIcon.ARROW_RIGHT, "horizontal-view", "Navigate to horizontal view"),
+                new LinkConfig(VerticalLayoutView.class, VaadinIcon.ARROW_DOWN, "vertical-view", "Navigate to vertical view")
         );
 
         return UiUtils.createNavigationLayout(linkConfigs);
