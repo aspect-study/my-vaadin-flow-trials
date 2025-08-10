@@ -6,6 +6,7 @@ import com.aspect.vaadin.study.views.common.ui.util.wrapper.LinkConfig;
 import com.aspect.vaadin.study.views.dashboards.DashboardView;
 import com.aspect.vaadin.study.views.datadisplay.GridView;
 import com.aspect.vaadin.study.views.datadisplay.TreeGridView;
+import com.aspect.vaadin.study.views.datadisplay.VirtualListView;
 import com.aspect.vaadin.study.views.forminputs.*;
 import com.aspect.vaadin.study.views.layouts.HorizontalLayoutView;
 import com.aspect.vaadin.study.views.layouts.VerticalLayoutView;
@@ -126,7 +127,8 @@ public class MainLayout extends AppLayout implements HasDynamicTitle {
     private static VerticalLayout getDataDisplayMenu() {
         List<LinkConfig> linkConfigs = List.of(
                 new LinkConfig(GridView.class, VaadinIcon.GRID, "grid-view", "Navigate to grid View"),
-                new LinkConfig(TreeGridView.class, VaadinIcon.TREE_TABLE, "tree-grid-view", "Navigate to tree grid View")
+                new LinkConfig(TreeGridView.class, VaadinIcon.TREE_TABLE, "tree-grid-view", "Navigate to tree grid View"),
+                new LinkConfig(VirtualListView.class, VaadinIcon.TREE_TABLE, "virtual-list-view", "Navigate to virtual list View")
         );
         return UiUtils.createNavigationLayout(linkConfigs);
     }
